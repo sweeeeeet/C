@@ -1,0 +1,15 @@
+﻿生成启动时间为 2018/9/25 17:34:33。
+     1>项目“C:\Users\11583\documents\visual studio 2013\Projects\Class41-TL-2\Class41-TL-2\Class41-TL-2.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Class41-TL-2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         D:\BaiduNetdiskDownload\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ChengFa.c
+         ChengFa.c
+     1>c:\users\11583\documents\visual studio 2013\projects\class41-tl-2\class41-tl-2\chengfa.c(12): warning C4013: “system”未定义；假设外部返回 int
+       Link:
+         D:\BaiduNetdiskDownload\VS2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\11583\Documents\Visual Studio 2013\Projects\Class41-TL-2\Debug\C1-TL.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\11583\Documents\Visual Studio 2013\Projects\Class41-TL-2\Debug\C1-TL.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\11583\Documents\Visual Studio 2013\Projects\Class41-TL-2\Debug\C1-TL.lib" /MACHINE:X86 Debug\ChengFa.obj
+         Class41-TL-2.vcxproj -> C:\Users\11583\Documents\Visual Studio 2013\Projects\Class41-TL-2\Debug\C1-TL.exe
+     1>已完成生成项目“C:\Users\11583\documents\visual studio 2013\Projects\Class41-TL-2\Class41-TL-2\Class41-TL-2.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.71
