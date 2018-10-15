@@ -1,8 +1,60 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+////2. º∆À„ 1!+ 2!+ 3!+ °≠°≠ + 10!
+
+	int sum = 0;
+	int temp = 1;
+
+int Factor_sum(int n){
+	
+	
+	if (n == 1){
+	sum += temp;
+		
+	}
+	else{
+		return temp=n*Factor_sum(n - 1);
+	}
+
+}
+
+int main(){
+
+	printf("%d\n", Factor_sum(3));
+	system("pause");
+	return 0;
+}
 
 
+
+
+
+
+
+//int Factor(int n){
+//	int temp = 1;
+//	int i = 0;
+//	
+//	for (i = 1; i < n; n--){
+//		temp *= n;
+//		
+//	}
+//	return temp;
+//}
+//int main(){
+//	int sum = 0;
+//	int n = 3;
+//	while (n>0){
+//
+//	sum += Factor(n);
+//	n--;
+//	}
+//	printf("%d\n", sum);
+//
+//	system("pause");
+//	return 0;
+//}
 
 
 //int main(){
