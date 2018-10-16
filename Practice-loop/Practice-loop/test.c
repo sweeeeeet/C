@@ -3,25 +3,26 @@
 
 ////2. º∆À„ 1!+ 2!+ 3!+ °≠°≠ + 10!
 
-	int sum = 0;
-	int temp = 1;
 
 int Factor_sum(int n){
 	
 	
 	if (n == 1){
-	sum += temp;
+		return 1;
 		
 	}
 	else{
-		return temp=n*Factor_sum(n - 1);
+		return n*Factor_sum(n - 1);
 	}
 
 }
 
 int main(){
-
-	printf("%d\n", Factor_sum(3));
+	int sum = 0;
+	for (int i = 1; i < 11; i++){
+		sum+= Factor_sum(i);
+	}
+	printf("%d\n", sum);
 	system("pause");
 	return 0;
 }
