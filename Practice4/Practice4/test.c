@@ -1,39 +1,44 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include<stdio.h>
-#include<stdlib.h>
 //
-//2.获取一个数二进制序列中所有的偶数位和奇数位，
-//分别输出二进制序列。
-//11101
-void fun(unsigned int value)
-{
-	int count = 0;
-	char odd[102] = { 0 };
-	char even[102] = { 0 };
-	// 返回 1的位数 
-	while (value != 0){
-
-		if (count / 2 == 0){
-		snprintf(even, "%d\n", value%2);
-
-		}
-		else if (count / 2 == 1){
-
-			snprintf(odd, "%d \n", value % 2);
-
-		}
-		
-		++count;
-		value = value / 2;
-	}
-	
-	printf("%s\n", odd);
-}
-int main(){
-	fun(15);
-	system("pause");
-	return 0;
-}
+//#include<stdio.h>
+//#include<stdlib.h>
+////
+////2.获取一个数二进制序列中所有的偶数位和奇数位，
+////分别输出二进制序列。
+////14
+////1101
+//void fun(unsigned int value)
+//{
+//	int count = 0;
+//	int index=0;
+//	int odd[102] = { 0 };
+//	int even[102] = { 0 };
+//	// 返回 1的位数 
+//	while (value != 0){
+//
+//		if (count / 2 == 0){
+//			even[index] = value % 2;
+//
+//		}
+//		else if (count / 2 == 1){
+//			odd[index] = value % 2;
+//		}
+//		--index;
+//		++count;
+//		value = value / 2;
+//	}
+//	while (odd[index] != NULL){
+//
+//		printf("%d", odd[index]);
+//
+//		index++;
+//	}
+//	
+//}
+//int main(){
+//	fun(13);
+//	system("pause");
+//	return 0;
+//}
 
 //3. 输出一个整数的每一位。
 //
@@ -100,19 +105,35 @@ int main(){
 //	printf("%d", size);
 //	Bubble(arr,size);
 //}
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+#include<stdio.h>
+#include<stdlib.h>
+void swap(int* x,int* y){
+	int temp = *x;
+	*x = *y;
+	*y = temp;
+}
+void Bubble(int arr[],int size){
+	for (int bound = 0; bound < size ; bound++){
+		for (int i = 0; i < size; i++){
+			if (arr[i] > arr[i + 1]){
+				swap(&arr[i], &arr[i + 1]);
 
+			}
 
+		}
+	}
+	for (int j = 0; j < size; j++){
+		printf("%d", arr[j]);
+	}
+	printf("\n");
+}
+int main(){
+	int arr[] = { 9, 5, 1, 2, 6, 7, 9, 8 };
+	int len = sizeof(arr)/sizeof(arr[0])-1;
+	Bubble(arr,len);
+	system("pause");
+	return 0;
+}
 
 
 
