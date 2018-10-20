@@ -112,9 +112,32 @@ void swap(int* x,int* y){
 	*x = *y;
 	*y = temp;
 }
-void Bubble(int arr[],int size){
-	for (int bound = 0; bound < size ; bound++){
-		for (int i = 0; i < size; i++){
+void Bubble2(int arr[],int len){
+	for (int i = 0; i < len; i++){
+		for (int j = 0; j < len; j++){
+
+			printf("%d", arr[j]);
+		}
+		printf("\n");
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+void Bubble1(int arr[],int size){
+	for (int bound = size; bound >0 ; bound--){
+		for (int i = 0; i < bound; i++){
 			if (arr[i] > arr[i + 1]){
 				swap(&arr[i], &arr[i + 1]);
 
@@ -130,7 +153,8 @@ void Bubble(int arr[],int size){
 int main(){
 	int arr[] = { 9, 5, 1, 2, 6, 7, 9, 8 };
 	int len = sizeof(arr)/sizeof(arr[0])-1;
-	Bubble(arr,len);
+	Bubble1(arr,len);
+	Bubble2(arr, len);
 	system("pause");
 	return 0;
 }
