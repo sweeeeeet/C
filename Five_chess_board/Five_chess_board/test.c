@@ -5,11 +5,12 @@
 #include<stdlib.h>
 #include<math.h>
 //1.定义二维数组表示棋盘
+
 char g_chess_board[ROW][COL];
 int input_row = -1;
 int input_col = -1;
 void Init(){
-
+	
 	for (int row = 0; row < ROW; row++){
 		for (int col = 0; col < COL; col++){
 			g_chess_board[row][col] = ' ';
@@ -23,25 +24,35 @@ void Init(){
 //3.打印棋盘
 void print(){
 	int row = 0;
+	for (int row = 0; row < ROW; row++){
+
+		printf(" %d   ", row);
+	}
+	printf("\n");
+
+
 	for (row = 0; row < ROW; row++){
-		for (int col = 0; col < COL; col++){
-			if (col != COL - 1){
-		printf("| %c ", g_chess_board[row][col]);
-			}
-			else{
-				printf("| %c |\n", g_chess_board[row][col]);
-
-			}
-
-		}
-		
 		
 		for (int i = 0; i < ROW; i++){
 			
-			printf("|---");
-		
+			printf("|----");
+
 		}
 		printf("\n");
+		for (int col = 0; col < COL; col++){
+			if (col != COL - 1){
+
+		printf("| %c  ", g_chess_board[row][col]);
+			}
+			else{
+				printf("| %c  |\n", g_chess_board[row][col]);
+
+			}
+
+		}
+		
+		
+		
 		
 		}
 		
@@ -60,6 +71,55 @@ int IsFull(){
 
 	}
 }
+//void print(){
+//	int row = 0;
+//	for (int row = 0; row < ROW; row++){
+//
+//		printf(" %d   ", row);
+//	}
+//	printf("\n");
+//
+//
+//	for (row = 0; row < ROW; row++){
+//
+//		for (int i = 0; i < ROW; i++){
+//			if (i == 0){
+//				printf("  |----");
+//
+//			}
+//			else{
+//
+//			printf("|----");
+//			}
+//
+//		}
+//		printf("\n");
+//		for (int col = 0; col < COL; col++){
+//			if (col != COL - 1){
+//				if (col == 0){
+//					printf("%d| %c  ",row, g_chess_board[row][col]);
+//
+//				}
+//				else{
+//					printf("| %c  ", g_chess_board[row][col]);
+//
+//				}
+//				//printf("| %c  ", g_chess_board[row][col]);
+//			}
+//			else{
+//				printf("| %c  |\n", g_chess_board[row][col]);
+//
+//			}
+//
+//		}
+//
+//
+//
+//
+//	}
+//
+//}
+
 void PlayerMove(){
 	//4.玩家落子，检查游戏是否结束
 	// a提示玩家落子
@@ -82,9 +142,110 @@ void PlayerMove(){
 		}
 		else if (g_chess_board[input_row][input_col] == ' '){
 				g_chess_board[input_row][input_col] = 'x';
+				
 			break;
 		}
 	}
+}
+void ComputerMove_upgrade_dia(int row, int col){
+
+	while (1){
+		
+			if (g_chess_board[++row][++col] == ' '){
+
+				g_chess_board[row][col] = 'o';
+				break;
+			}
+		}
+}
+void ComputerMove_upgrade_right(int row, int col){
+	while (1){
+
+		if (g_chess_board[row][++col] == ' '){
+
+			g_chess_board[row][col] = 'o';
+			break;
+		}
+		else{
+			if (g_chess_board[++row][col] == ' '){
+
+				g_chess_board[row][col] = 'o';
+				break;
+			}
+		}
+	}
+}
+void ComputerMove_upgrade_left(int row, int col){
+	while (1){
+
+		if (g_chess_board[row][--col] == ' '){
+
+			g_chess_board[row][col] = 'o';
+			break;
+		}
+		else{
+			if (g_chess_board[--row][col] == ' '){
+
+				g_chess_board[row][col] = 'o';
+				break;
+			}
+		}
+	}
+
+}
+
+void ComputerMove_upgrade(int row, int col){
+	if (row == col){
+	ComputerMove_upgrade_dia( row, col);
+
+	}
+	else if (row < col){
+
+	ComputerMove_upgrade_right(row, col);
+	}
+	else if (row>col){
+
+	ComputerMove_upgrade_left(row, col);
+	}
+
+	//while (1){
+	//	if (row == col){
+	//		if (g_chess_board[++row][++col] == ' '){
+
+	//			g_chess_board[++row][++col] = 'o';
+	//			break;
+	//		}
+	//	}
+	//	else{
+
+	//	//紧跟用户落子的后面落子
+	//		for (int row_i = row+1; row_i < ROW; row_i++){
+	//			for (int col_j = col+1; col_j < COL; col_j++){
+
+	//				if (g_chess_board[row_i][col_j] == ' '){
+
+	//					g_chess_board[row_i][col_j] = 'o';
+	//					break;
+	//				}
+	//			}
+	//		}
+	//		//紧跟用户落子的前面落子
+	//		for (int row_i = row-1; row_i >= 0; row_i--){
+	//			for (int col_j = col-1; col_j >= 0; col_j--){
+
+	//				if (g_chess_board[row_i][col_j] == ' '){
+
+	//					g_chess_board[row_i][col_j] = 'o';
+	//					break;
+	//				}
+
+	//			}
+	//		}
+
+
+	//	}
+	//	
+	//}
 }
 void ComouterMove(){
 	//5.电脑落子，检查游戏是否结束
@@ -179,7 +340,8 @@ int main(){
 		if (winner != ' '){
 			break;
 		}
-		ComouterMove();
+		ComputerMove_upgrade(input_row, input_col);
+		//ComouterMove();
 		winner = CheckWinner();
 		if (winner != ' '){
 			break;
