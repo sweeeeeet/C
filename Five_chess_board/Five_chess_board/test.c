@@ -26,23 +26,35 @@ void print(){
 	int row = 0;
 	for (int row = 0; row < ROW; row++){
 
-		printf(" %d   ", row);
+		printf("   %2d", row);
 	}
 	printf("\n");
 
 
-	for (row = 0; row < ROW; row++){
-		
+	for (int row = 0; row < ROW; row++){
+
 		for (int i = 0; i < ROW; i++){
-			
-			printf("|----");
+			if (i == 0){
+				printf("  |----");
+
+			}
+			else{
+
+				printf("|----");
+			}
 
 		}
 		printf("\n");
 		for (int col = 0; col < COL; col++){
 			if (col != COL - 1){
+				if (col == 0){
+					printf("%2d| %c  ", row, g_chess_board[row][col]);
 
-		printf("| %c  ", g_chess_board[row][col]);
+				}
+				else{
+
+					printf("| %c  ", g_chess_board[row][col]);
+				}
 			}
 			else{
 				printf("| %c  |\n", g_chess_board[row][col]);
@@ -50,13 +62,25 @@ void print(){
 			}
 
 		}
-		
-		
-		
-		
-		}
-		
+
+
+
+
 	}
+	
+
+		for (int i = 0; i < ROW; i++){
+			if (i == 0){
+				printf("  |----");
+
+			}
+			else{
+
+				printf("|----");
+			}		
+	}
+		printf("\n");
+}
 
 int IsFull(){
 	//满了返回1 没满返回0
@@ -71,54 +95,7 @@ int IsFull(){
 
 	}
 }
-//void print(){
-//	int row = 0;
-//	for (int row = 0; row < ROW; row++){
-//
-//		printf(" %d   ", row);
-//	}
-//	printf("\n");
-//
-//
-//	for (row = 0; row < ROW; row++){
-//
-//		for (int i = 0; i < ROW; i++){
-//			if (i == 0){
-//				printf("  |----");
-//
-//			}
-//			else{
-//
-//			printf("|----");
-//			}
-//
-//		}
-//		printf("\n");
-//		for (int col = 0; col < COL; col++){
-//			if (col != COL - 1){
-//				if (col == 0){
-//					printf("%d| %c  ",row, g_chess_board[row][col]);
-//
-//				}
-//				else{
-//					printf("| %c  ", g_chess_board[row][col]);
-//
-//				}
-//				//printf("| %c  ", g_chess_board[row][col]);
-//			}
-//			else{
-//				printf("| %c  |\n", g_chess_board[row][col]);
-//
-//			}
-//
-//		}
-//
-//
-//
-//
-//	}
-//
-//}
+
 
 void PlayerMove(){
 	//4.玩家落子，检查游戏是否结束
@@ -161,13 +138,13 @@ void ComputerMove_upgrade_dia(int row, int col){
 void ComputerMove_upgrade_right(int row, int col){
 	while (1){
 
-		if (g_chess_board[row][++col] == ' '){
+		if (g_chess_board[++row][col] == ' '){
 
 			g_chess_board[row][col] = 'o';
 			break;
 		}
 		else{
-			if (g_chess_board[++row][col] == ' '){
+			if (g_chess_board[row][++col] == ' '){
 
 				g_chess_board[row][col] = 'o';
 				break;

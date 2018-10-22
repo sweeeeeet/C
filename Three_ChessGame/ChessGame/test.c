@@ -55,12 +55,18 @@ void PlayerMove(){
 	while (1){
 		printf("请玩家落子（输入棋盘数字坐标row col）\n");
 		scanf("%d%d", &input_row, &input_col);
-		if (input_col > COL || input_col<0 || input_row>ROW || input_row < 0){
+		if (input_col >= COL || input_col<0 || input_row>=ROW || input_row < 0){
 
 			printf("输入棋盘范围错误，请重输~~\n");
 			continue;
 		}
 		else {
+			if (g_chess_board[input_row][input_col] != ' '){
+
+				printf("当前位置有子，请重新落子！\n");
+				continue;
+			}
+				
 			if (g_chess_board[input_row][input_col] == ' ')
 				g_chess_board[input_row][input_col] = 'x';
 			break;

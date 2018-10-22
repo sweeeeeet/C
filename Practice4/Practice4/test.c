@@ -47,30 +47,7 @@
 //输入例子 :
 //1999 2299
 //输出例子 : 7
-////1.
-////写一个函数返回参数二进制中 1 的个数
-////比如： 15 0000 1111 4 个 1
-////程序原型：
-//int count_one_bits(unsigned int value)
-//{
-//			int count = 0;
-//			int one = 0;
-//	// 返回 1的位数 
-//	while (value!=0){
-//	
-//		one = value % 2;
-//		if (one == 1){
-//			++count;
-//		}
-//		value = value / 2;
-//	}
-//	return count;
-//}
-//int main(){
-//	printf("%d\n",count_one_bits(15));
-//	system("pause");
-//	return 0;
-//}
+
 
 //////冒泡法
 //void swap(int* x, int* y){
