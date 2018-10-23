@@ -124,7 +124,7 @@ void PlayerMove(){
 		}
 	}
 }
-void ComputerMove_upgrade_dia(int row, int col){
+void ComputerMove_upgrade_diaplus(int row, int col){
 
 	while (1){
 		
@@ -135,94 +135,125 @@ void ComputerMove_upgrade_dia(int row, int col){
 			}
 		}
 }
-void ComputerMove_upgrade_right(int row, int col){
+void ComputerMove_upgrade_diareduce(int row, int col){
+
 	while (1){
+
+		if (g_chess_board[--row][--col] == ' '){
+
+			g_chess_board[row][col] = 'o';
+			break;
+		}
+	}
+}
+void ComputerMove_upgrade_rowplus(int row, int col){
+	while (1){
+
 
 		if (g_chess_board[++row][col] == ' '){
 
 			g_chess_board[row][col] = 'o';
 			break;
 		}
-		else{
-			if (g_chess_board[row][++col] == ' '){
-
-				g_chess_board[row][col] = 'o';
-				break;
-			}
-		}
 	}
 }
-void ComputerMove_upgrade_left(int row, int col){
+void ComputerMove_upgrade_colplus(int row, int col){
 	while (1){
+
 
 		if (g_chess_board[row][--col] == ' '){
 
 			g_chess_board[row][col] = 'o';
 			break;
 		}
-		else{
-			if (g_chess_board[--row][col] == ' '){
+	}
+}
+void ComputerMove_upgrade_rowreduce(int row, int col){
+	while (1){
 
-				g_chess_board[row][col] = 'o';
-				break;
-			}
+
+		if (g_chess_board[--row][col] == ' '){
+
+			g_chess_board[row][col] = 'o';
+			break;
+		}
+	}
+}
+void ComputerMove_upgrade_colreduce(int row, int col){
+	while (1){
+
+
+		if (g_chess_board[row][--col] == ' '){
+
+			g_chess_board[row][col] = 'o';
+			break;
+		}
+	}
+}
+
+ComputerMove_upgrade_move(row, col){
+	while (1){
+
+
+		if (g_chess_board[row][--col] == ' '){
+
+			g_chess_board[row][col] = 'o';
+			break;
+		}
+		if (g_chess_board[--row][col] == ' '){
+
+			g_chess_board[row][col] = 'o';
+			break;
+		}
+		if (g_chess_board[++row][col] == ' '){
+
+			g_chess_board[row][col] = 'o';
+			break;
+		}
+		if (g_chess_board[row][++col] == ' '){
+
+			g_chess_board[row][col] = 'o';
+			break;
 		}
 	}
 
 }
 
+
+
+
 void ComputerMove_upgrade(int row, int col){
-	if (row == col){
-	ComputerMove_upgrade_dia( row, col);
+	
+	if (g_chess_board[row - 1][col] == g_chess_board[row][col]){
+
+		ComputerMove_upgrade_rowplus(row, col);
+	}
+	else if (g_chess_board[row][col - 1] == g_chess_board[row][col]){
+		ComputerMove_upgrade_colplus(row, col);
 
 	}
-	else if (row < col){
+	else if (g_chess_board[row + 1][col] == g_chess_board[row][col]){
 
-	ComputerMove_upgrade_right(row, col);
+		ComputerMove_upgrade_rowreduce(row, col);
 	}
-	else if (row>col){
+	else if (g_chess_board[row][col + 1] == g_chess_board[row][col]){
+		ComputerMove_upgrade_colreduce(row, col);
 
-	ComputerMove_upgrade_left(row, col);
+	}
+	else if (g_chess_board[row+1][col + 1] == g_chess_board[row][col]){
+		ComputerMove_upgrade_diareduce(row, col);
+
+	}
+	else if (g_chess_board[row - 1][col - 1] == g_chess_board[row][col]){
+		ComputerMove_upgrade_diaplus(row, col);
+
+	}
+	else{
+		ComputerMove_upgrade_move(row, col);
+
+
 	}
 
-	//while (1){
-	//	if (row == col){
-	//		if (g_chess_board[++row][++col] == ' '){
-
-	//			g_chess_board[++row][++col] = 'o';
-	//			break;
-	//		}
-	//	}
-	//	else{
-
-	//	//紧跟用户落子的后面落子
-	//		for (int row_i = row+1; row_i < ROW; row_i++){
-	//			for (int col_j = col+1; col_j < COL; col_j++){
-
-	//				if (g_chess_board[row_i][col_j] == ' '){
-
-	//					g_chess_board[row_i][col_j] = 'o';
-	//					break;
-	//				}
-	//			}
-	//		}
-	//		//紧跟用户落子的前面落子
-	//		for (int row_i = row-1; row_i >= 0; row_i--){
-	//			for (int col_j = col-1; col_j >= 0; col_j--){
-
-	//				if (g_chess_board[row_i][col_j] == ' '){
-
-	//					g_chess_board[row_i][col_j] = 'o';
-	//					break;
-	//				}
-
-	//			}
-	//		}
-
-
-	//	}
-	//	
-	//}
 }
 void ComouterMove(){
 	//5.电脑落子，检查游戏是否结束
